@@ -17,23 +17,22 @@ const Square = ({ value, onSquireClick }) => {
 const Board = () => {
   const [squires, setSquires] = useState(Array(9).fill(null));
   const [x, setX] = useState(true);
-  const winner = calculateWinner(squires) 
-  console.log(winner)
-  let status
+  const winner = calculateWinner(squires);
+  console.log(winner);
+  let status;
 
-  if(winner){
-    status = `Winner : ${winner}`
-    
-  }else{
-    status = `Next player : ${x ? 'X' : "O"}`
+  if (winner) {
+    status = `Winner : ${winner}`;
+  } else {
+    status = `Next player : ${x ? "X" : "O"}`;
   }
 
   const handleClick = (i) => {
-    if(squires[i]){
-      alert('Already fill up')
-      return 
-    }else if (winner){
-      alert(`Winner is Selected : ${winner} `)
+    if (squires[i]) {
+      alert("Already fill up");
+      return;
+    } else if (winner) {
+      alert(`Winner is Selected : ${winner} `);
     }
     const newSquires = [...squires];
     //state change immutably==== = = = ==  == ===============
@@ -42,16 +41,16 @@ const Board = () => {
     } else {
       newSquires[i] = "O";
     }
-    
+
     setSquires(newSquires);
     setX(!x);
-    
   };
   return (
-    <>
-    <div>
-      <p>{status}</p>
-    </div>
+   <div className="flex justify-center items-center h-full">
+     <div>
+      <div>
+        <p className="font-bold text-2xl">{status}</p>
+      </div>
       <div className="flex">
         <Square
           value={squires[0]}
@@ -96,7 +95,8 @@ const Board = () => {
           onSquireClick={() => handleClick(8)}
         ></Square>
       </div>
-    </>
+    </div>
+   </div>
   );
 };
 
