@@ -29,7 +29,7 @@ const Board = () => {
 
   const handleClick = (i) => {
     if (squires[i]) {
-      alert("Already fill up");
+      alert("Already fill up !!");
       return;
     } else if (winner) {
       alert(`Winner is Selected : ${winner} `);
